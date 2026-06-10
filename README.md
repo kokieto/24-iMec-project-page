@@ -1,10 +1,10 @@
-# Learning to Hear While Walking Demo
+# Online Adaptation for Ego-Noise Separation in Legged Robot Audition
 
-Static audio demo page for WalkReOnline.
+Static audio demo page for 24-iMec.
 
 Public page:
 
-https://blind-review-demo.github.io/WalkReOnline-demo/
+https://blind-review-demo.github.io/24-iMec-demo-page/
 
 Open `index.html` through GitHub Pages or a local static server.
 
