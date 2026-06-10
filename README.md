@@ -1,6 +1,6 @@
 # Online Adaptation for Ego-Noise Separation in Legged Robot Audition
 
-Static audio demo page for 24-iMec.
+Static audio demo page for iMec 2026 blind review.
 
 Public page:
 

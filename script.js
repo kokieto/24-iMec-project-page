@@ -2,7 +2,7 @@ const samplesRoot = document.querySelector("#samples");
 const colorbarImage = document.querySelector("#colorbarImage");
 const colorbarCaption = document.querySelector("#colorbarCaption");
 const attributionRows = document.querySelector("#attributionRows");
-const dataUrl = "assets/data/demo-data.json?v=20260608-title-status";
+const dataUrl = "assets/data/demo-data.json?v=20260610-project-labels-robots";
 
 function fmtScore(value) {
   return Number.isFinite(value) ? value.toFixed(2) : "N/A";
@@ -14,11 +14,11 @@ function trackNode(track) {
   const status =
     typeof track.correct === "boolean"
       ? `<span class="track__status ${track.correct ? "is-correct" : "is-wrong"}">${
-          track.correct ? "Result: Correct" : "Result: Wrong"
+          track.correct ? "Correct" : "Wrong"
         }</span>`
       : "";
   const prediction = track.prediction
-    ? `<span class="track__prediction">Top-3: ${track.prediction}</span>`
+    ? `<span class="track__prediction">Prediction Top-3: ${track.prediction}</span>`
     : "";
   const scores =
     typeof track.cap_score === "number" || typeof track.saj_score === "number"

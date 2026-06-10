@@ -1,6 +1,6 @@
 :root {
   color-scheme: light;
-  --bg: #f6f7f9;
+  --bg: #ffffff;
   --ink: #17202a;
   --muted: #64707d;
   --line: #d9dee5;
@@ -13,8 +13,15 @@
   box-sizing: border-box;
 }
 
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
   background: var(--bg);
   color: var(--ink);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -22,9 +29,11 @@ body {
 }
 
 .hero {
-  background: #1f2933;
-  color: #fff;
-  padding: 56px 24px 42px;
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  padding: 50px 24px 36px;
+  text-align: center;
 }
 
 .hero__inner,
@@ -36,7 +45,7 @@ footer {
 
 .eyebrow {
   margin: 0 0 12px;
-  color: #b8c5d1;
+  color: var(--muted);
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0;
@@ -52,18 +61,29 @@ figure {
 }
 
 h1 {
-  max-width: 860px;
-  margin-bottom: 14px;
-  font-size: clamp(2.1rem, 7vw, 4.4rem);
-  line-height: 1.02;
+  max-width: 980px;
+  margin: 0 auto 16px;
+  font-size: 3.15rem;
+  line-height: 1.08;
   letter-spacing: 0;
+  overflow-wrap: break-word;
 }
 
-.lead {
-  max-width: 720px;
-  margin-bottom: 0;
-  color: #e5edf5;
-  font-size: 1.04rem;
+.authors {
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.author-list,
+.affiliation {
+  margin-bottom: 6px;
+  color: var(--ink);
+  font-size: 1.22rem;
+}
+
+.affiliation {
+  color: var(--muted);
+  font-size: 1.12rem;
 }
 
 .section {
@@ -85,6 +105,7 @@ h1 {
 .section p,
 footer {
   color: var(--muted);
+  overflow-wrap: anywhere;
 }
 
 .score-note {
@@ -134,6 +155,7 @@ footer {
 }
 
 .sample {
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel);
@@ -172,6 +194,7 @@ footer {
 }
 
 .pill {
+  min-width: 0;
   border: 1px solid #b9c5d0;
   border-radius: 6px;
   padding: 6px 10px;
@@ -179,11 +202,13 @@ footer {
   color: var(--ink);
   font-size: 0.98rem;
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .tracks {
   display: grid;
   gap: 14px;
+  min-width: 0;
 }
 
 .tracks--references {
@@ -203,6 +228,7 @@ footer {
 .spectrogram {
   display: block;
   width: 100%;
+  min-width: 0;
   aspect-ratio: 16 / 7.5;
   object-fit: fill;
   border: 1px solid var(--line);
@@ -325,7 +351,11 @@ footer {
 
 @media (max-width: 820px) {
   .hero {
-    padding: 44px 20px 34px;
+    padding: 42px 20px 30px;
+  }
+
+  h1 {
+    font-size: 2.08rem;
   }
 
   .section--legend,
@@ -345,5 +375,55 @@ footer {
 
   .tracks--methods {
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__inner,
+  main,
+  footer {
+    width: min(100% - 24px, 1180px);
+  }
+
+  h1 {
+    max-width: 340px;
+    font-size: 1.5rem;
+    line-height: 1.18;
+  }
+
+  .author-list,
+  .affiliation {
+    overflow-wrap: anywhere;
+    font-size: 1.06rem;
+  }
+
+  .affiliation {
+    font-size: 1rem;
+  }
+
+  .section h2,
+  .demo-section > h2 {
+    font-size: 1.38rem;
+  }
+
+  .colorbar {
+    width: 100%;
+  }
+
+  .colorbar figcaption {
+    text-align: center;
+  }
+
+  .sample {
+    padding: 14px;
+  }
+
+  .sample__meta {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .tracks--methods {
+    grid-template-columns: 1fr;
   }
 }
