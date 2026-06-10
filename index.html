@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Learning to Hear While Walking</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__inner">
+        <p class="eyebrow">Online ego-noise adaptation demo</p>
+        <h1>Learning to Hear While Walking</h1>
+        <p class="lead">
+          Audio examples for online self-noise adaptation in walking robots.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="section section--legend">
+        <div>
+          <h2>Demo Samples</h2>
+          <p>Each set shows references first, followed by separated target estimates from each method.</p>
+          <p class="score-note">
+            CLAP Score↑ is the CLAP audio embedding cosine similarity between the target and the
+            separated estimate. SAJ Score↑ is the overall separation judgment score. Higher is better.
+          </p>
+        </div>
+        <figure class="colorbar">
+          <img id="colorbarImage" alt="Spectrogram color scale" />
+          <figcaption id="colorbarCaption"></figcaption>
+        </figure>
+      </section>
+
+      <div id="samples" class="samples"></div>
+    </main>
+
+    <footer>
+      <section class="acknowledgements" aria-label="Acknowledgements">
+        <h2>Acknowledgements</h2>
+        <p>
+          This work was partially supported by a JSPS Research Fellowship for Young Scientists (DC1).
+          The grant number is omitted here for double-blind review.
+        </p>
+      </section>
+      <section class="attributions" aria-label="Dataset attributions">
+        <h2>Dataset Attributions</h2>
+        <p>
+          Audio examples are redistributed as short demo clips under the licenses listed below.
+        </p>
+        <div class="attributions__table-wrap">
+          <table class="attributions__table">
+            <thead>
+              <tr>
+                <th>Sample</th>
+                <th>Category</th>
+                <th>Source Dataset</th>
+                <th>License</th>
+              </tr>
+            </thead>
+            <tbody id="attributionRows"></tbody>
+          </table>
+        </div>
+      </section>
+      <p>Generated from the current WalkReOnline experiment outputs.</p>
+    </footer>
+
+    <script src="script.js?v=20260608-title-status"></script>
+  </body>
+</html>
