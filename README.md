@@ -1,10 +1,10 @@
 # Online Adaptation for Ego-Noise Separation in Legged Robot Audition
 
-Static audio demo page for iMec 2026 blind review.
+Static audio project page for iMec 2026 blind review.
 
 Public page:
 
-https://blind-review-demo.github.io/24-iMec-demo-page/
+https://kokieto.github.io/24-iMec-project-page/
 
 Open `index.html` through GitHub Pages or a local static server.
 

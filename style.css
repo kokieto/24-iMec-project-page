@@ -140,16 +140,16 @@ footer {
   padding-bottom: 44px;
 }
 
-.demo-section {
+.project-page-section {
   display: grid;
   gap: 28px;
 }
 
-.demo-section + .demo-section {
+.project-page-section + .project-page-section {
   margin-top: 8px;
 }
 
-.demo-section > h2 {
+.project-page-section > h2 {
   margin: 6px 0 -8px;
   font-size: 1.55rem;
 }
@@ -402,7 +402,7 @@ footer {
   }
 
   .section h2,
-  .demo-section > h2 {
+  .project-page-section > h2 {
     font-size: 1.38rem;
   }
 
