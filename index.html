@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Online Adaptation for Ego-Noise Separation in Legged Robot Audition</title>
-    <link rel="stylesheet" href="style.css?v=20260610-project-final" />
+    <title>Audio-Language-Aligned Clustering for Ego-Noise Separation in Legged Robot Audition</title>
+    <link rel="stylesheet" href="style.css?v=20260612-page-update" />
   </head>
   <body>
     <header class="hero">
       <div class="hero__inner">
-        <p class="eyebrow">Online ego-noise adaptation project page</p>
-        <h1>Online Adaptation for Ego-Noise Separation in Legged Robot Audition</h1>
+        <p class="eyebrow">Project Page</p>
+        <h1>Audio-Language-Aligned Clustering for Ego-Noise Separation in Legged Robot Audition</h1>
         <div class="authors" aria-label="Authors and affiliations">
           <p class="author-list">Koki Shoda, Jun Younes Louhi Kasahara, Qi An, and Atsushi Yamashita</p>
           <p class="affiliation">The University of Tokyo</p>
@@ -19,13 +19,102 @@
     </header>
 
     <main>
-      <section class="section section--legend">
+      <section class="section section--intro" aria-labelledby="introTitle">
+        <div class="section__copy">
+          <h2 id="introTitle">Introduction</h2>
+          <p>
+            Ego-noise separation is a fundamental capability for legged robot audition. When a robot
+            walks, its motors, joints, foot contacts, and body vibration can dominate the onboard
+            microphones, making it difficult to recognize surrounding sounds. This project studies how
+            a robot can mine its own ego-noise from unlabeled recordings and adapt an audio separator
+            for downstream zero-shot sound classification.
+          </p>
+        </div>
+        <div class="video-grid">
+          <figure class="media-figure">
+            <video controls preload="metadata" src="assets/G1_egonoise.mp4"></video>
+            <figcaption>Example of ego-noise recorded by a humanoid robot, Unitree G1.</figcaption>
+          </figure>
+          <figure class="media-figure">
+            <video controls preload="metadata" src="assets/go1_egonoise.mp4"></video>
+            <figcaption>Example of ego-noise recorded by a quadruped robot, Unitree Go1.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section section--method" aria-labelledby="methodTitle">
+        <div class="section__copy">
+          <h2 id="methodTitle">Proposed Method</h2>
+        </div>
+        <figure class="method-figure">
+          <img src="Method/EgoNoiseSeparationProcess.png" alt="Overview of the ego-noise separator" />
+          <figcaption>
+            <strong>Overview of the ego-noise separator.</strong> First, the VAE encoder maps audio to a
+            low-frame-rate latent representation. Adapt-DiT, described below, predicts a velocity field
+            that moves the latent representation h of ego-noise-contaminated audio toward the latent
+            representation of clean audio. Finally, the clean VAE decoder converts the clean latent
+            representation back to a waveform.
+          </figcaption>
+        </figure>
+        <figure class="method-figure">
+          <img src="Method/ArchitectureofAdapt-DiT.png" alt="Architecture of Adapt-DiT" />
+          <figcaption>
+            <strong>Architecture of Adaptive Diffusion Transformer (Adapt-DiT).</strong> Adapt-DiT builds
+            on a DiT trained to separate text-specified sounds and efficiently adapts it to the fixed
+            task of ego-noise separation. Conditioned on the latent representation of mixture audio,
+            Adapt-DiT predicts a velocity field from Gaussian noise toward the clean audio latent
+            representation.
+          </figcaption>
+        </figure>
+        <figure class="method-figure">
+          <img src="Method/AudioLanguageAlignedClustering.png" alt="Audio-language-aligned clustering for ego-noise mining" />
+          <figcaption>
+            <strong>Audio-Language-Aligned Clustering for Ego-Noise Mining.</strong> Robot recordings are
+            first split into short audio clips. A pretrained VAE encoder and Transformer encoder map
+            each clip to a latent representation so semantic similarity between clips can be measured.
+            A pretrained ModernBERT text encoder maps ego-noise prompts to the same embedding space.
+            Because the audio and text encoders are aligned, sounds and text with the same meaning are
+            mapped to nearby vectors. The embeddings are then passed through Principal Component
+            Analysis (PCA) to reduce factors other than whether a clip contains only ego-noise or also
+            includes environmental sound. Hierarchical Density-Based Spatial Clustering of Applications
+            with Noise (HDBSCAN), which is robust to imbalanced cluster sizes, groups semantically
+            similar sounds. The cluster closest to the text-prompt embedding is selected as the
+            ego-noise-only cluster. This framework automatically mines ego-noise-only clips from
+            ego-noise recordings that may contain environmental sounds.
+          </figcaption>
+        </figure>
+        <figure class="method-figure">
+          <img src="Method/TrainingMethod.png" alt="Training method of the ego-noise separator" />
+          <figcaption>
+            <strong>Training method of Ego-Noise Separator.</strong> Automatically mined ego-noise is
+            mixed at diverse ratios with sounds x(t) sampled from a large-scale sound-source dataset.
+            The Ego-Noise Separator is trained to separate ego-noise and the remaining non-ego sound
+            from the mixture.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="section section--results" aria-labelledby="resultsTitle">
+        <div class="section__copy">
+          <h2 id="resultsTitle">Overall Evaluation</h2>
+          <p>
+            We evaluate ego-noise separation on ESC-50 environmental sounds mixed with robot ego-noise
+            from Unitree G1 and Unitree Go1 at -6, 0, and +6 dB SNR. After separation, a PE-AV small
+            zero-shot classifier predicts one of 50 ESC-50 classes from the separated environmental
+            sound. Tables report mean scores by method, robot, and SNR; the best value in each
+            robot-SNR column is shown in bold.
+          </p>
+        </div>
+        <div id="evaluationTables" class="evaluation-tables"></div>
+      </section>
+
+      <section class="section section--legend" aria-labelledby="demoTitle">
         <div>
-          <h2>Audio Examples</h2>
+          <h2 id="demoTitle">Demo: Zero-Shot Sound Classification After Ego-Noise Separation</h2>
           <p>Each set shows references first, followed by separated target estimates from each method.</p>
           <p class="score-note">
-            CLAP Score↑ is the CLAP audio embedding cosine similarity between the target and the
-            separated estimate. SAJ Score↑ is the overall separation judgment score. Higher is better.
+            CLAP Score is the CLAP audio embedding cosine similarity between the target and the
+            separated estimate. SAJ Score is the overall separation judgment score. Higher is better.
           </p>
         </div>
         <figure class="colorbar">
@@ -64,9 +153,9 @@
           </table>
         </div>
       </section>
-      <p>Generated from the current WalkReOnline experiment outputs.</p>
+      <p>Generated from the current 24-iMec experiment outputs.</p>
     </footer>
 
-    <script src="script.js?v=20260610-project-labels-robots"></script>
+    <script src="script.js?v=20260612-page-update"></script>
   </body>
 </html>

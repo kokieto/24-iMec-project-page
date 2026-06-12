@@ -2,7 +2,8 @@ const samplesRoot = document.querySelector("#samples");
 const colorbarImage = document.querySelector("#colorbarImage");
 const colorbarCaption = document.querySelector("#colorbarCaption");
 const attributionRows = document.querySelector("#attributionRows");
-const dataUrl = "assets/data/project-data.json?v=20260610-project-labels-robots";
+const evaluationTables = document.querySelector("#evaluationTables");
+const dataUrl = "assets/data/project-data.json?v=20260612-page-update";
 
 function fmtScore(value) {
   return Number.isFinite(value) ? value.toFixed(2) : "N/A";
@@ -22,7 +23,7 @@ function trackNode(track) {
     : "";
   const scores =
     typeof track.cap_score === "number" || typeof track.saj_score === "number"
-      ? `<span class="track__score">CLAP Score↑: ${fmtScore(track.cap_score)} | SAJ Score↑: ${fmtScore(track.saj_score)}</span>`
+      ? `<span class="track__score">CLAP Score: ${fmtScore(track.cap_score)} | SAJ Score: ${fmtScore(track.saj_score)}</span>`
       : "";
   item.innerHTML = `
     <img class="spectrogram" src="${track.spectrogram}" alt="${track.label} spectrogram" loading="lazy" />
@@ -72,10 +73,50 @@ function sampleNode(sample, index) {
 function projectPageSectionNode(section) {
   const wrapper = document.createElement("section");
   wrapper.className = "project-page-section";
-  const title = document.createElement("h2");
-  title.textContent = section.title;
-  wrapper.append(title, ...section.samples.map(sampleNode));
+  wrapper.append(...section.samples.map(sampleNode));
   return wrapper;
+}
+
+function metricValueNode(metric) {
+  if (typeof metric.value !== "number") {
+    return `<span class="metric-value is-empty">N/A</span>`;
+  }
+  const value = fmtScore(metric.value);
+  const content = metric.best ? `<strong>${value}</strong>` : value;
+  return `<span class="metric-value"><span>${metric.label}</span> ${content}</span>`;
+}
+
+function summaryTableNode(table) {
+  const section = document.createElement("section");
+  section.className = "summary-table";
+  const metricNames = table.metrics.map(metric => metric.label).join(" / ");
+  section.innerHTML = `
+    <h3>${table.title}</h3>
+    <div class="summary-table__wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Method</th>
+            ${(table.columns || []).map(column => `<th>${column.label}</th>`).join("")}
+          </tr>
+        </thead>
+        <tbody>
+          ${(table.rows || [])
+            .map(row => `
+              <tr>
+                <th>${row.label}</th>
+                ${row.cells
+                  .map(cell => `<td>${cell.metrics.map(metricValueNode).join("")}</td>`)
+                  .join("")}
+              </tr>
+            `)
+            .join("")}
+        </tbody>
+      </table>
+    </div>
+    <p class="summary-table__note">Values show mean ${metricNames} over samples in each robot-SNR condition.</p>
+  `;
+  return section;
 }
 
 function attributionNode(item) {
@@ -95,6 +136,7 @@ fetch(dataUrl)
     colorbarImage.src = data.spectrogram.colorbar;
     colorbarCaption.textContent = `${data.spectrogram.db_min} to ${data.spectrogram.db_max} dBFS`;
     const sections = data.sections || [{ title: "Audio Examples", samples: data.samples || [] }];
+    evaluationTables.replaceChildren(...(data.summary_tables || []).map(summaryTableNode));
     samplesRoot.replaceChildren(...sections.map(projectPageSectionNode));
     attributionRows.replaceChildren(...(data.attributions || []).map(attributionNode));
   });
