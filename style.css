@@ -29,6 +29,10 @@ body {
   line-height: 1.55;
 }
 
+body :where(h1, h2, h3, p, figcaption, th, td, span, strong, a, footer) {
+  color: #000 !important;
+}
+
 .hero {
   border-bottom: 1px solid var(--line);
   background: #fff;
@@ -149,12 +153,15 @@ footer {
 .media-figure figcaption,
 .method-figure figcaption {
   margin-top: 8px;
-  color: var(--muted);
+  color: #000 !important;
   font-size: 0.92rem;
 }
 
 .method-figure figcaption {
+  display: block;
+  width: 100%;
   text-align: justify;
+  text-align-last: justify;
   text-justify: inter-word;
 }
 
