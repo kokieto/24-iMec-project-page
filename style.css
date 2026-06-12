@@ -64,7 +64,7 @@ figure {
 h1 {
   max-width: 980px;
   margin: 0 auto 16px;
-  font-size: 3.15rem;
+  font-size: 2.72rem;
   line-height: 1.08;
   letter-spacing: 0;
   overflow-wrap: break-word;
@@ -159,13 +159,13 @@ footer {
 }
 
 .method-figure {
-  max-width: 490px;
+  max-width: 588px;
   margin-right: auto;
   margin-left: auto;
 }
 
 .method-figure figcaption {
-  max-width: 490px;
+  max-width: 588px;
 }
 
 .evaluation-tables {
