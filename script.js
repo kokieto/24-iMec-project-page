@@ -83,13 +83,18 @@ function metricValueNode(metric) {
   }
   const value = fmtScore(metric.value);
   const content = metric.best ? `<strong>${value}</strong>` : value;
-  return `<span class="metric-value"><span>${metric.label}</span> ${content}</span>`;
+  return `<span class="metric-value"><span>${metric.label}:</span> ${content}</span>`;
 }
 
 function summaryTableNode(table) {
   const section = document.createElement("section");
   section.className = "summary-table";
   const metricNames = table.metrics.map(metric => metric.label).join(" / ");
+  const rows = (table.rows || []).slice().sort((a, b) => {
+    if (a.label === "Ours" && b.label !== "Ours") return 1;
+    if (a.label !== "Ours" && b.label === "Ours") return -1;
+    return 0;
+  });
   const metricDescription =
     table.kind === "separation"
       ? `<p class="summary-table__description">
@@ -110,7 +115,7 @@ function summaryTableNode(table) {
           </tr>
         </thead>
         <tbody>
-          ${(table.rows || [])
+          ${rows
             .map(row => `
               <tr>
                 <th>${row.label}</th>
