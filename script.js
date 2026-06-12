@@ -90,8 +90,17 @@ function summaryTableNode(table) {
   const section = document.createElement("section");
   section.className = "summary-table";
   const metricNames = table.metrics.map(metric => metric.label).join(" / ");
+  const metricDescription =
+    table.kind === "separation"
+      ? `<p class="summary-table__description">
+          CLAP Score is the cosine similarity between sounds embedded by a general-purpose audio encoder,
+          indicating similarity between the target sounds. SAJ Score is the quality of noise reduction
+          predicted by a model trained with human subjective evaluations.
+        </p>`
+      : "";
   section.innerHTML = `
     <h3>${table.title}</h3>
+    ${metricDescription}
     <div class="summary-table__wrap">
       <table>
         <thead>
