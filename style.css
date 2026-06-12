@@ -153,19 +153,24 @@ footer {
   font-size: 0.92rem;
 }
 
+.method-figure figcaption {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 .section--method {
   display: grid;
   gap: 24px;
 }
 
 .method-figure {
-  max-width: 588px;
+  max-width: 676.2px;
   margin-right: auto;
   margin-left: auto;
 }
 
 .method-figure figcaption {
-  max-width: 588px;
+  max-width: 676.2px;
 }
 
 .evaluation-tables {
