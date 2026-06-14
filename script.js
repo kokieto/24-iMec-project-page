@@ -4,7 +4,7 @@ const colorbarCaption = document.querySelector("#colorbarCaption");
 const attributionRows = document.querySelector("#attributionRows");
 const evaluationTables = document.querySelector("#evaluationTables");
 const miningSummary = document.querySelector("#miningSummary");
-const dataUrl = "assets/data/project-data.json?v=20260614-no-processing";
+const dataUrl = "assets/data/project-data.json?v=20260614-mining-text";
 
 function fmtScore(value) {
   return Number.isFinite(value) ? value.toFixed(2) : "N/A";
@@ -97,7 +97,6 @@ function metricValueNode(metric) {
 
 function miningSummaryNode(summary) {
   const dataset = summary?.dataset || {};
-  const method = summary?.method || {};
   const overall = summary?.overall || {};
   const robotRows = summary?.robots || [];
   if (!summary) {
@@ -122,11 +121,8 @@ function miningSummaryNode(summary) {
         ${dataset.environment_source || "the adaptation environmental dataset"} and the train split of
         each robot's ego-noise recordings. Clips are ${clipSpec}; the validation labels contain
         ${fmtInt(dataset.true_ego_only)} ego-only clips and ${fmtInt(dataset.mixed_environment_ego)}
-        environment-plus-ego clips.
-      </p>
-      <p>
-        PE-AV embeddings are reduced with ${method.reduction || "PCA"}-${method.pca_dim || "N/A"} and clustered
-        with HDBSCAN (min cluster size ${method.min_cluster_size || "N/A"}, min samples ${method.min_samples || "N/A"}).
+        environment-plus-ego clips, with SNR randomly sampled from
+        ${dataset.mixed_snr_min_db} dB to ${dataset.mixed_snr_max_db} dB.
       </p>
     </div>
     <div class="mining-summary__metrics" aria-label="Mining precision results">

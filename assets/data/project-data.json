@@ -7798,7 +7798,9 @@
       "sample_rate": "16000",
       "true_ego_only": 400,
       "mixed_environment_ego": 400,
-      "environment_source": "FSD50K_eval_16kHz.pickle",
+      "mixed_snr_min_db": -10,
+      "mixed_snr_max_db": 10,
+      "environment_source": "FSD50K_eval",
       "manifest": "/mnt/usb_ssd2tb/ExpLog/iMec_v1/adaptation_audio/adaptation_manifest.csv"
     },
     "method": {
