@@ -3,10 +3,19 @@ const colorbarImage = document.querySelector("#colorbarImage");
 const colorbarCaption = document.querySelector("#colorbarCaption");
 const attributionRows = document.querySelector("#attributionRows");
 const evaluationTables = document.querySelector("#evaluationTables");
-const dataUrl = "assets/data/project-data.json?v=20260612-page-update";
+const miningSummary = document.querySelector("#miningSummary");
+const dataUrl = "assets/data/project-data.json?v=20260614-mining-summary";
 
 function fmtScore(value) {
   return Number.isFinite(value) ? value.toFixed(2) : "N/A";
+}
+
+function fmtPercent(value) {
+  return Number.isFinite(value) ? `${value.toFixed(1)}%` : "N/A";
+}
+
+function fmtInt(value) {
+  return Number.isFinite(value) ? value.toLocaleString("en-US") : "N/A";
 }
 
 function trackNode(track) {
@@ -86,6 +95,80 @@ function metricValueNode(metric) {
   return `<span class="metric-value"><span>${metric.label}:</span> ${content}</span>`;
 }
 
+function miningSummaryNode(summary) {
+  const dataset = summary?.dataset || {};
+  const method = summary?.method || {};
+  const overall = summary?.overall || {};
+  const robotRows = summary?.robots || [];
+  if (!summary) {
+    return document.createDocumentFragment();
+  }
+
+  const perRobot = Object.entries(dataset.samples_per_robot || {})
+    .map(([robot, count]) => `${robot}: ${fmtInt(count)}`)
+    .join(", ");
+  const clipSpec = [
+    Number.isFinite(dataset.duration_sec) ? `${dataset.duration_sec.toFixed(0)} s` : null,
+    dataset.sample_rate ? `${fmtInt(Number(dataset.sample_rate))} Hz` : null,
+  ].filter(Boolean).join(", ");
+
+  const section = document.createElement("section");
+  section.className = "mining-summary__panel";
+  section.innerHTML = `
+    <div class="mining-summary__copy">
+      <h3>Ego-Noise Mining Dataset</h3>
+      <p>
+        Mining uses ${fmtInt(dataset.samples)} adaptation clips (${perRobot}) built from
+        ${dataset.environment_source || "the adaptation environmental dataset"} and the train split of
+        each robot's ego-noise recordings. Clips are ${clipSpec}; the validation labels contain
+        ${fmtInt(dataset.true_ego_only)} ego-only clips and ${fmtInt(dataset.mixed_environment_ego)}
+        environment-plus-ego clips.
+      </p>
+      <p>
+        PE-AV embeddings are reduced with ${method.reduction || "PCA"}-${method.pca_dim || "N/A"} and clustered
+        with HDBSCAN (min cluster size ${method.min_cluster_size || "N/A"}, min samples ${method.min_samples || "N/A"}).
+      </p>
+    </div>
+    <div class="mining-summary__metrics" aria-label="Mining precision results">
+      <div class="mining-summary__overall">
+        <span>Overall mining accuracy</span>
+        <strong>${fmtPercent(overall.accuracy)}</strong>
+        <span>Precision ${fmtPercent(overall.precision)} / Recall ${fmtPercent(overall.recall)} / F1 ${fmtPercent(overall.f1)}</span>
+        <span>${fmtInt(overall.mined)} clips mined as ego-only</span>
+      </div>
+      <div class="mining-summary__table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Robot</th>
+              <th>Samples</th>
+              <th>Mined</th>
+              <th>Precision</th>
+              <th>Recall</th>
+              <th>F1</th>
+              <th>Accuracy</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${robotRows.map(row => `
+              <tr>
+                <th>${row.robot}</th>
+                <td>${fmtInt(row.samples)}</td>
+                <td>${fmtInt(row.mined)}</td>
+                <td>${fmtPercent(row.precision)}</td>
+                <td>${fmtPercent(row.recall)}</td>
+                <td>${fmtPercent(row.f1)}</td>
+                <td>${fmtPercent(row.accuracy)}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+  return section;
+}
+
 function summaryTableNode(table) {
   const section = document.createElement("section");
   section.className = "summary-table";
@@ -150,6 +233,7 @@ fetch(dataUrl)
     colorbarImage.src = data.spectrogram.colorbar;
     colorbarCaption.textContent = `${data.spectrogram.db_min} to ${data.spectrogram.db_max} dBFS`;
     const sections = data.sections || [{ title: "Audio Examples", samples: data.samples || [] }];
+    miningSummary.replaceChildren(miningSummaryNode(data.mining_summary));
     evaluationTables.replaceChildren(...(data.summary_tables || []).map(summaryTableNode));
     samplesRoot.replaceChildren(...sections.map(projectPageSectionNode));
     attributionRows.replaceChildren(...(data.attributions || []).map(attributionNode));
