@@ -6397,6 +6397,120 @@
       ],
       "rows": [
         {
+          "method": "no_preprocessing",
+          "label": "No Processing",
+          "cells": [
+            {
+              "robot": "G1",
+              "snr": -6,
+              "metrics": [
+                {
+                  "metric": "CLAP",
+                  "label": "CLAP Score",
+                  "value": 0.37875204,
+                  "best": false
+                },
+                {
+                  "metric": "SAJ_Overall",
+                  "label": "SAJ Score",
+                  "value": 1.38962855,
+                  "best": false
+                }
+              ]
+            },
+            {
+              "robot": "G1",
+              "snr": 0,
+              "metrics": [
+                {
+                  "metric": "CLAP",
+                  "label": "CLAP Score",
+                  "value": 0.51284956,
+                  "best": false
+                },
+                {
+                  "metric": "SAJ_Overall",
+                  "label": "SAJ Score",
+                  "value": 1.37825044,
+                  "best": false
+                }
+              ]
+            },
+            {
+              "robot": "G1",
+              "snr": 6,
+              "metrics": [
+                {
+                  "metric": "CLAP",
+                  "label": "CLAP Score",
+                  "value": 0.67168322,
+                  "best": false
+                },
+                {
+                  "metric": "SAJ_Overall",
+                  "label": "SAJ Score",
+                  "value": 1.40912096,
+                  "best": false
+                }
+              ]
+            },
+            {
+              "robot": "Go1",
+              "snr": -6,
+              "metrics": [
+                {
+                  "metric": "CLAP",
+                  "label": "CLAP Score",
+                  "value": 0.2409605,
+                  "best": false
+                },
+                {
+                  "metric": "SAJ_Overall",
+                  "label": "SAJ Score",
+                  "value": 1.52572111,
+                  "best": false
+                }
+              ]
+            },
+            {
+              "robot": "Go1",
+              "snr": 0,
+              "metrics": [
+                {
+                  "metric": "CLAP",
+                  "label": "CLAP Score",
+                  "value": 0.40259865,
+                  "best": false
+                },
+                {
+                  "metric": "SAJ_Overall",
+                  "label": "SAJ Score",
+                  "value": 1.47945436,
+                  "best": false
+                }
+              ]
+            },
+            {
+              "robot": "Go1",
+              "snr": 6,
+              "metrics": [
+                {
+                  "metric": "CLAP",
+                  "label": "CLAP Score",
+                  "value": 0.5688727,
+                  "best": false
+                },
+                {
+                  "metric": "SAJ_Overall",
+                  "label": "SAJ Score",
+                  "value": 1.56376846,
+                  "best": false
+                }
+              ]
+            }
+          ]
+        },
+        {
           "method": "sam_audio_lora",
           "label": "Ours",
           "cells": [
@@ -6732,120 +6846,6 @@
                   "metric": "SAJ_Overall",
                   "label": "SAJ Score",
                   "value": 3.46556784,
-                  "best": false
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "method": "no_preprocessing",
-          "label": "Mixture",
-          "cells": [
-            {
-              "robot": "G1",
-              "snr": -6,
-              "metrics": [
-                {
-                  "metric": "CLAP",
-                  "label": "CLAP Score",
-                  "value": 0.37875204,
-                  "best": false
-                },
-                {
-                  "metric": "SAJ_Overall",
-                  "label": "SAJ Score",
-                  "value": 1.38962855,
-                  "best": false
-                }
-              ]
-            },
-            {
-              "robot": "G1",
-              "snr": 0,
-              "metrics": [
-                {
-                  "metric": "CLAP",
-                  "label": "CLAP Score",
-                  "value": 0.51284956,
-                  "best": false
-                },
-                {
-                  "metric": "SAJ_Overall",
-                  "label": "SAJ Score",
-                  "value": 1.37825044,
-                  "best": false
-                }
-              ]
-            },
-            {
-              "robot": "G1",
-              "snr": 6,
-              "metrics": [
-                {
-                  "metric": "CLAP",
-                  "label": "CLAP Score",
-                  "value": 0.67168322,
-                  "best": false
-                },
-                {
-                  "metric": "SAJ_Overall",
-                  "label": "SAJ Score",
-                  "value": 1.40912096,
-                  "best": false
-                }
-              ]
-            },
-            {
-              "robot": "Go1",
-              "snr": -6,
-              "metrics": [
-                {
-                  "metric": "CLAP",
-                  "label": "CLAP Score",
-                  "value": 0.2409605,
-                  "best": false
-                },
-                {
-                  "metric": "SAJ_Overall",
-                  "label": "SAJ Score",
-                  "value": 1.52572111,
-                  "best": false
-                }
-              ]
-            },
-            {
-              "robot": "Go1",
-              "snr": 0,
-              "metrics": [
-                {
-                  "metric": "CLAP",
-                  "label": "CLAP Score",
-                  "value": 0.40259865,
-                  "best": false
-                },
-                {
-                  "metric": "SAJ_Overall",
-                  "label": "SAJ Score",
-                  "value": 1.47945436,
-                  "best": false
-                }
-              ]
-            },
-            {
-              "robot": "Go1",
-              "snr": 6,
-              "metrics": [
-                {
-                  "metric": "CLAP",
-                  "label": "CLAP Score",
-                  "value": 0.5688727,
-                  "best": false
-                },
-                {
-                  "metric": "SAJ_Overall",
-                  "label": "SAJ Score",
-                  "value": 1.56376846,
                   "best": false
                 }
               ]
@@ -7239,6 +7239,84 @@
       ],
       "rows": [
         {
+          "method": "no_preprocessing",
+          "label": "No Processing",
+          "cells": [
+            {
+              "robot": "G1",
+              "snr": -6,
+              "metrics": [
+                {
+                  "metric": "Accuracy",
+                  "label": "Accuracy",
+                  "value": 0.37066667,
+                  "best": false
+                }
+              ]
+            },
+            {
+              "robot": "G1",
+              "snr": 0,
+              "metrics": [
+                {
+                  "metric": "Accuracy",
+                  "label": "Accuracy",
+                  "value": 0.53333333,
+                  "best": false
+                }
+              ]
+            },
+            {
+              "robot": "G1",
+              "snr": 6,
+              "metrics": [
+                {
+                  "metric": "Accuracy",
+                  "label": "Accuracy",
+                  "value": 0.66933333,
+                  "best": false
+                }
+              ]
+            },
+            {
+              "robot": "Go1",
+              "snr": -6,
+              "metrics": [
+                {
+                  "metric": "Accuracy",
+                  "label": "Accuracy",
+                  "value": 0.24133333,
+                  "best": false
+                }
+              ]
+            },
+            {
+              "robot": "Go1",
+              "snr": 0,
+              "metrics": [
+                {
+                  "metric": "Accuracy",
+                  "label": "Accuracy",
+                  "value": 0.472,
+                  "best": false
+                }
+              ]
+            },
+            {
+              "robot": "Go1",
+              "snr": 6,
+              "metrics": [
+                {
+                  "metric": "Accuracy",
+                  "label": "Accuracy",
+                  "value": 0.636,
+                  "best": false
+                }
+              ]
+            }
+          ]
+        },
+        {
           "method": "sam_audio_lora",
           "label": "Ours",
           "cells": [
@@ -7466,84 +7544,6 @@
                   "metric": "Accuracy",
                   "label": "Accuracy",
                   "value": 0.692,
-                  "best": false
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "method": "no_preprocessing",
-          "label": "Mixture",
-          "cells": [
-            {
-              "robot": "G1",
-              "snr": -6,
-              "metrics": [
-                {
-                  "metric": "Accuracy",
-                  "label": "Accuracy",
-                  "value": 0.37066667,
-                  "best": false
-                }
-              ]
-            },
-            {
-              "robot": "G1",
-              "snr": 0,
-              "metrics": [
-                {
-                  "metric": "Accuracy",
-                  "label": "Accuracy",
-                  "value": 0.53333333,
-                  "best": false
-                }
-              ]
-            },
-            {
-              "robot": "G1",
-              "snr": 6,
-              "metrics": [
-                {
-                  "metric": "Accuracy",
-                  "label": "Accuracy",
-                  "value": 0.66933333,
-                  "best": false
-                }
-              ]
-            },
-            {
-              "robot": "Go1",
-              "snr": -6,
-              "metrics": [
-                {
-                  "metric": "Accuracy",
-                  "label": "Accuracy",
-                  "value": 0.24133333,
-                  "best": false
-                }
-              ]
-            },
-            {
-              "robot": "Go1",
-              "snr": 0,
-              "metrics": [
-                {
-                  "metric": "Accuracy",
-                  "label": "Accuracy",
-                  "value": 0.472,
-                  "best": false
-                }
-              ]
-            },
-            {
-              "robot": "Go1",
-              "snr": 6,
-              "metrics": [
-                {
-                  "metric": "Accuracy",
-                  "label": "Accuracy",
-                  "value": 0.636,
                   "best": false
                 }
               ]

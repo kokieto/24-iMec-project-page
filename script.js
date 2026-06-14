@@ -4,7 +4,7 @@ const colorbarCaption = document.querySelector("#colorbarCaption");
 const attributionRows = document.querySelector("#attributionRows");
 const evaluationTables = document.querySelector("#evaluationTables");
 const miningSummary = document.querySelector("#miningSummary");
-const dataUrl = "assets/data/project-data.json?v=20260614-mining-summary";
+const dataUrl = "assets/data/project-data.json?v=20260614-no-processing";
 
 function fmtScore(value) {
   return Number.isFinite(value) ? value.toFixed(2) : "N/A";
@@ -174,6 +174,8 @@ function summaryTableNode(table) {
   section.className = "summary-table";
   const metricNames = table.metrics.map(metric => metric.label).join(" / ");
   const rows = (table.rows || []).slice().sort((a, b) => {
+    if (a.method === "no_preprocessing" && b.method !== "no_preprocessing") return -1;
+    if (a.method !== "no_preprocessing" && b.method === "no_preprocessing") return 1;
     if (a.label === "Ours" && b.label !== "Ours") return 1;
     if (a.label !== "Ours" && b.label === "Ours") return -1;
     return 0;
