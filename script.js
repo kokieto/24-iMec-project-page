@@ -4,7 +4,7 @@ const colorbarCaption = document.querySelector("#colorbarCaption");
 const attributionRows = document.querySelector("#attributionRows");
 const evaluationTables = document.querySelector("#evaluationTables");
 const miningSummary = document.querySelector("#miningSummary");
-const dataUrl = "assets/data/project-data.json?v=20260614-mining-text";
+const dataUrl = "assets/data/project-data.json?v=20260614-demo-exclusions";
 
 function fmtScore(value) {
   return Number.isFinite(value) ? value.toFixed(2) : "N/A";
