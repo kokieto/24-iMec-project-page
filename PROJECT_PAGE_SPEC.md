@@ -13,3 +13,4 @@ This project page shows the 24-iMec project overview, method figures, aggregate 
 - Each method shows `Correct` or `Wrong` for top-1 class classification.
 - Each method shows top-3 predicted classes in rank order.
 - The proposed method label is `Ours`.
+- Spectrogram color limits are computed per audio example from the mixture spectrogram using the configured lower and upper percentiles. The same limits are used for mixture, ego-noise, target, and all method outputs in that example.

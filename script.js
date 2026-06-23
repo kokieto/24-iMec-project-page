@@ -10,6 +10,10 @@ function fmtScore(value) {
   return Number.isFinite(value) ? value.toFixed(2) : "N/A";
 }
 
+function fmtPercentile(value) {
+  return Number.isFinite(value) ? value.toPrecision(2).replace(/\.0$/, "") : "N/A";
+}
+
 function fmtPercent(value) {
   return Number.isFinite(value) ? `${value.toFixed(1)}%` : "N/A";
 }
@@ -229,7 +233,8 @@ fetch(dataUrl)
   .then(response => response.json())
   .then(data => {
     colorbarImage.src = data.spectrogram.colorbar;
-    colorbarCaption.textContent = `${data.spectrogram.db_min} to ${data.spectrogram.db_max} dBFS`;
+    const cut = data.spectrogram.percentile_cut;
+    colorbarCaption.textContent = `Per-example mixture percentile scale (${fmtPercentile(cut)}-${fmtPercentile(100 - cut)}%)`;
     const sections = data.sections || [{ title: "Audio Examples", samples: data.samples || [] }];
     miningSummary.replaceChildren(miningSummaryNode(data.mining_summary));
     evaluationTables.replaceChildren(...(data.summary_tables || []).map(summaryTableNode));
