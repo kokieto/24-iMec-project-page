@@ -1,8 +1,8 @@
 {
   "title": "Audio-Language-Aligned Clustering for Ego-Noise Separation in Legged Robot Audition",
   "spectrogram": {
-    "db_min": -70.0,
-    "db_max": -30.0,
+    "db_min": -50.0,
+    "db_max": -25.0,
     "reference": "amplitude 1.0",
     "colorbar": "assets/spectrogram_colorbar.png"
   },
@@ -2915,100 +2915,100 @@
           ]
         },
         {
-          "sample_id": "G1_snrp00p0_49_14_hand_saw_3-102583-B-49",
+          "sample_id": "G1_snrp00p0_49_12_hand_saw_3-102583-A-49",
           "robot": "G1",
           "snr_db": 0.0,
           "class": "hand saw",
           "ground_truth": "hand saw",
-          "selection_score": 5.5508599732,
+          "selection_score": 6.3808479768,
           "reference_tracks": [
             {
               "key": "mixture",
               "label": "Mixture",
-              "audio": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/mixture.wav",
-              "spectrogram": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/mixture.png"
+              "audio": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/mixture.wav",
+              "spectrogram": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/mixture.png"
             },
             {
               "key": "ego_noise",
               "label": "Ego-Noise",
-              "audio": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/ego_noise.wav",
-              "spectrogram": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/ego_noise.png"
+              "audio": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/ego_noise.wav",
+              "spectrogram": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/ego_noise.png"
             },
             {
               "key": "target",
               "label": "Target",
-              "audio": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/target.wav",
-              "spectrogram": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/target.png"
+              "audio": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/target.wav",
+              "spectrogram": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/target.png"
             }
           ],
           "method_tracks": [
             {
               "method": "sam_audio_lora",
               "label": "Ours",
-              "prediction": "hand saw / breathing / clock tick",
+              "prediction": "hand saw / chainsaw / pig",
               "prediction_status": "Correct",
               "prediction_top3": [
                 "hand saw",
-                "breathing",
-                "clock tick"
+                "chainsaw",
+                "pig"
               ],
               "prediction_top1": "hand saw",
               "correct": true,
-              "cap_score": 0.93177825,
-              "saj_score": 4.70255566,
-              "audio": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/sam_audio_lora.wav",
-              "spectrogram": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/sam_audio_lora.png"
+              "cap_score": 0.89048052,
+              "saj_score": 4.59283161,
+              "audio": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/sam_audio_lora.wav",
+              "spectrogram": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/sam_audio_lora.png"
             },
             {
               "method": "Sam-Audio",
               "label": "SAM-Audio",
-              "prediction": "rain / clock tick / wind",
+              "prediction": "rain / clock tick / pouring water",
               "prediction_status": "Wrong",
               "prediction_top3": [
                 "rain",
                 "clock tick",
-                "wind"
+                "pouring water"
               ],
               "prediction_top1": "rain",
               "correct": false,
-              "cap_score": 0.19438896,
-              "saj_score": 1.00664508,
-              "audio": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/Sam-Audio.wav",
-              "spectrogram": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/Sam-Audio.png"
+              "cap_score": 0.21400893,
+              "saj_score": 1.00779867,
+              "audio": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/Sam-Audio.wav",
+              "spectrogram": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/Sam-Audio.png"
             },
             {
               "method": "clapsep",
               "label": "CLAPSep",
-              "prediction": "hand saw / breathing / train",
-              "prediction_status": "Correct",
+              "prediction": "washing machine / vacuum cleaner / hand saw",
+              "prediction_status": "Wrong",
               "prediction_top3": [
-                "hand saw",
-                "breathing",
-                "train"
+                "washing machine",
+                "vacuum cleaner",
+                "hand saw"
               ],
-              "prediction_top1": "hand saw",
-              "correct": true,
-              "cap_score": 0.79796404,
-              "saj_score": 3.49437094,
-              "audio": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/clapsep.wav",
-              "spectrogram": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/clapsep.png"
+              "prediction_top1": "washing machine",
+              "correct": false,
+              "cap_score": 0.17197396,
+              "saj_score": 1.10701942,
+              "audio": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/clapsep.wav",
+              "spectrogram": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/clapsep.png"
             },
             {
               "method": "espnet_convtasnet",
               "label": "Conv-TasNet",
-              "prediction": "hand saw / breathing / footsteps",
+              "prediction": "hand saw / breathing / crackling fire",
               "prediction_status": "Correct",
               "prediction_top3": [
                 "hand saw",
                 "breathing",
-                "footsteps"
+                "crackling fire"
               ],
               "prediction_top1": "hand saw",
               "correct": true,
-              "cap_score": 0.79244781,
-              "saj_score": 3.90461779,
-              "audio": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/espnet_convtasnet.wav",
-              "spectrogram": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/espnet_convtasnet.png"
+              "cap_score": 0.77838588,
+              "saj_score": 3.26252031,
+              "audio": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/espnet_convtasnet.wav",
+              "spectrogram": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/espnet_convtasnet.png"
             },
             {
               "method": "espnet_dprnn_tf",
@@ -3022,27 +3022,27 @@
               ],
               "prediction_top1": "hand saw",
               "correct": true,
-              "cap_score": 0.73068166,
-              "saj_score": 3.59413958,
-              "audio": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/espnet_dprnn_tf.wav",
-              "spectrogram": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/espnet_dprnn_tf.png"
+              "cap_score": 0.68822527,
+              "saj_score": 3.05805755,
+              "audio": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/espnet_dprnn_tf.wav",
+              "spectrogram": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/espnet_dprnn_tf.png"
             },
             {
               "method": "espnet_conformer",
               "label": "Conformer",
-              "prediction": "hand saw / breathing / water drops",
+              "prediction": "hand saw / washing machine / water drops",
               "prediction_status": "Correct",
               "prediction_top3": [
                 "hand saw",
-                "breathing",
+                "washing machine",
                 "water drops"
               ],
               "prediction_top1": "hand saw",
               "correct": true,
-              "cap_score": 0.75669622,
-              "saj_score": 3.47743368,
-              "audio": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/espnet_conformer.wav",
-              "spectrogram": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/espnet_conformer.png"
+              "cap_score": 0.72711051,
+              "saj_score": 3.30151963,
+              "audio": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/espnet_conformer.wav",
+              "spectrogram": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/espnet_conformer.png"
             }
           ]
         },
@@ -10746,100 +10746,100 @@
       ]
     },
     {
-      "sample_id": "G1_snrp00p0_49_14_hand_saw_3-102583-B-49",
+      "sample_id": "G1_snrp00p0_49_12_hand_saw_3-102583-A-49",
       "robot": "G1",
       "snr_db": 0.0,
       "class": "hand saw",
       "ground_truth": "hand saw",
-      "selection_score": 5.5508599732,
+      "selection_score": 6.3808479768,
       "reference_tracks": [
         {
           "key": "mixture",
           "label": "Mixture",
-          "audio": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/mixture.wav",
-          "spectrogram": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/mixture.png"
+          "audio": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/mixture.wav",
+          "spectrogram": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/mixture.png"
         },
         {
           "key": "ego_noise",
           "label": "Ego-Noise",
-          "audio": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/ego_noise.wav",
-          "spectrogram": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/ego_noise.png"
+          "audio": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/ego_noise.wav",
+          "spectrogram": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/ego_noise.png"
         },
         {
           "key": "target",
           "label": "Target",
-          "audio": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/target.wav",
-          "spectrogram": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/target.png"
+          "audio": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/target.wav",
+          "spectrogram": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/target.png"
         }
       ],
       "method_tracks": [
         {
           "method": "sam_audio_lora",
           "label": "Ours",
-          "prediction": "hand saw / breathing / clock tick",
+          "prediction": "hand saw / chainsaw / pig",
           "prediction_status": "Correct",
           "prediction_top3": [
             "hand saw",
-            "breathing",
-            "clock tick"
+            "chainsaw",
+            "pig"
           ],
           "prediction_top1": "hand saw",
           "correct": true,
-          "cap_score": 0.93177825,
-          "saj_score": 4.70255566,
-          "audio": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/sam_audio_lora.wav",
-          "spectrogram": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/sam_audio_lora.png"
+          "cap_score": 0.89048052,
+          "saj_score": 4.59283161,
+          "audio": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/sam_audio_lora.wav",
+          "spectrogram": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/sam_audio_lora.png"
         },
         {
           "method": "Sam-Audio",
           "label": "SAM-Audio",
-          "prediction": "rain / clock tick / wind",
+          "prediction": "rain / clock tick / pouring water",
           "prediction_status": "Wrong",
           "prediction_top3": [
             "rain",
             "clock tick",
-            "wind"
+            "pouring water"
           ],
           "prediction_top1": "rain",
           "correct": false,
-          "cap_score": 0.19438896,
-          "saj_score": 1.00664508,
-          "audio": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/Sam-Audio.wav",
-          "spectrogram": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/Sam-Audio.png"
+          "cap_score": 0.21400893,
+          "saj_score": 1.00779867,
+          "audio": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/Sam-Audio.wav",
+          "spectrogram": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/Sam-Audio.png"
         },
         {
           "method": "clapsep",
           "label": "CLAPSep",
-          "prediction": "hand saw / breathing / train",
-          "prediction_status": "Correct",
+          "prediction": "washing machine / vacuum cleaner / hand saw",
+          "prediction_status": "Wrong",
           "prediction_top3": [
-            "hand saw",
-            "breathing",
-            "train"
+            "washing machine",
+            "vacuum cleaner",
+            "hand saw"
           ],
-          "prediction_top1": "hand saw",
-          "correct": true,
-          "cap_score": 0.79796404,
-          "saj_score": 3.49437094,
-          "audio": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/clapsep.wav",
-          "spectrogram": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/clapsep.png"
+          "prediction_top1": "washing machine",
+          "correct": false,
+          "cap_score": 0.17197396,
+          "saj_score": 1.10701942,
+          "audio": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/clapsep.wav",
+          "spectrogram": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/clapsep.png"
         },
         {
           "method": "espnet_convtasnet",
           "label": "Conv-TasNet",
-          "prediction": "hand saw / breathing / footsteps",
+          "prediction": "hand saw / breathing / crackling fire",
           "prediction_status": "Correct",
           "prediction_top3": [
             "hand saw",
             "breathing",
-            "footsteps"
+            "crackling fire"
           ],
           "prediction_top1": "hand saw",
           "correct": true,
-          "cap_score": 0.79244781,
-          "saj_score": 3.90461779,
-          "audio": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/espnet_convtasnet.wav",
-          "spectrogram": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/espnet_convtasnet.png"
+          "cap_score": 0.77838588,
+          "saj_score": 3.26252031,
+          "audio": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/espnet_convtasnet.wav",
+          "spectrogram": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/espnet_convtasnet.png"
         },
         {
           "method": "espnet_dprnn_tf",
@@ -10853,27 +10853,27 @@
           ],
           "prediction_top1": "hand saw",
           "correct": true,
-          "cap_score": 0.73068166,
-          "saj_score": 3.59413958,
-          "audio": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/espnet_dprnn_tf.wav",
-          "spectrogram": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/espnet_dprnn_tf.png"
+          "cap_score": 0.68822527,
+          "saj_score": 3.05805755,
+          "audio": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/espnet_dprnn_tf.wav",
+          "spectrogram": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/espnet_dprnn_tf.png"
         },
         {
           "method": "espnet_conformer",
           "label": "Conformer",
-          "prediction": "hand saw / breathing / water drops",
+          "prediction": "hand saw / washing machine / water drops",
           "prediction_status": "Correct",
           "prediction_top3": [
             "hand saw",
-            "breathing",
+            "washing machine",
             "water drops"
           ],
           "prediction_top1": "hand saw",
           "correct": true,
-          "cap_score": 0.75669622,
-          "saj_score": 3.47743368,
-          "audio": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/espnet_conformer.wav",
-          "spectrogram": "assets/audio/23_G1_snrp00p0_49_14_hand_saw_3-102583-B-49/espnet_conformer.png"
+          "cap_score": 0.72711051,
+          "saj_score": 3.30151963,
+          "audio": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/espnet_conformer.wav",
+          "spectrogram": "assets/audio/23_G1_snrp00p0_49_12_hand_saw_3-102583-A-49/espnet_conformer.png"
         }
       ]
     },
@@ -14378,10 +14378,10 @@
       "license": "Creative Commons Attribution-NonCommercial (CC BY-NC)"
     },
     {
-      "sample": "hand_saw_3-102583-B-49",
+      "sample": "hand_saw_3-102583-A-49",
       "category": "hand saw",
       "dataset": "ESC-50",
-      "source_file": "3-102583-B-49.wav",
+      "source_file": "3-102583-A-49.wav",
       "creator": "ESC-50 / original Freesound contributors",
       "source_url": "https://freesound.org/s/102583/",
       "license": "Creative Commons Attribution-NonCommercial (CC BY-NC)"
