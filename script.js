@@ -4,14 +4,14 @@ const colorbarCaption = document.querySelector("#colorbarCaption");
 const attributionRows = document.querySelector("#attributionRows");
 const evaluationTables = document.querySelector("#evaluationTables");
 const miningSummary = document.querySelector("#miningSummary");
-const dataUrl = "assets/data/project-data.json?v=20260614-demo-exclusions";
+const dataUrl = "assets/data/project-data.json?v=20260623-percentile-7p5";
 
 function fmtScore(value) {
   return Number.isFinite(value) ? value.toFixed(2) : "N/A";
 }
 
 function fmtPercentile(value) {
-  return Number.isFinite(value) ? value.toPrecision(2).replace(/\.0$/, "") : "N/A";
+  return Number.isFinite(value) ? value.toLocaleString("en-US", { maximumFractionDigits: 1 }) : "N/A";
 }
 
 function fmtPercent(value) {
@@ -234,7 +234,7 @@ fetch(dataUrl)
   .then(data => {
     colorbarImage.src = data.spectrogram.colorbar;
     const cut = data.spectrogram.percentile_cut;
-    colorbarCaption.textContent = `Per-example mixture percentile scale (${fmtPercentile(cut)}-${fmtPercentile(100 - cut)}%)`;
+    colorbarCaption.textContent = `${fmtPercentile(cut)}% tile to ${fmtPercentile(100 - cut)}% tile`;
     const sections = data.sections || [{ title: "Audio Examples", samples: data.samples || [] }];
     miningSummary.replaceChildren(miningSummaryNode(data.mining_summary));
     evaluationTables.replaceChildren(...(data.summary_tables || []).map(summaryTableNode));

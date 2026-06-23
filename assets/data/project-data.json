@@ -2,7 +2,7 @@
   "title": "Audio-Language-Aligned Clustering for Ego-Noise Separation in Legged Robot Audition",
   "spectrogram": {
     "scale": "mixture_percentile",
-    "percentile_cut": 5.0,
+    "percentile_cut": 7.5,
     "reference": "per-example mixture spectrogram",
     "colorbar": "assets/spectrogram_colorbar.png"
   },
